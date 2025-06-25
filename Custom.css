@@ -1,0 +1,110 @@
+/* === Calculator Display === */
+#result {
+    color: aquamarine;
+    height: 100px;
+    width: 100%;
+    font-size: 24px;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: left;
+    background-color: #1c1c1c;
+    border: none;
+}
+
+/* === Main Calculator Table === */
+#myTable {
+    width: 300px;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+/* === General Button Styling === */
+#myTable button {
+    display: block;
+    margin: auto;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+
+/* Circles in 2x2 grid */
+.circles {
+    display: grid;
+    grid-template-columns: repeat(2, 40px);
+    grid-gap: 5px;
+}
+
+.circles button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #333;
+    color: white;
+}
+
+/* Arrow pad in D-pad layout */
+.arrows {
+    display: grid;
+    grid-template-columns: repeat(3, 40px);
+    grid-template-rows: repeat(3, 40px);
+    gap: 5px;
+    justify-items: center;
+    align-items: center;
+}
+.middle{
+    grid-row: 2/3;
+}
+.vertical{
+    grid-column: 2/3;
+}
+
+.arrows button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #5551f6;
+    color: white;
+}
+
+/* === Middle Table Buttons === */
+#Middle_table button {
+    width: 46px;
+    height: 42px;
+    padding: 0;
+    font-size: 14px;
+    margin: 3px;
+}
+#Middle_table{
+    width: 300px;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+/* === Number Pad and Symbol Buttons === */
+.numbers {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    color: darkkhaki;
+    font-size: 16px;
+}
+
+.symbols {
+    border-radius: 12px;
+    width: 60px;
+    height: 50px;
+    font-size: 16px;
+    background-color: #450057;
+    color: white;
+}
+
+/* === Lower Table Buttons === */
+#Lower-table {
+    width: 300px;
+    margin: auto;
+    border-collapse: collapse;
+}
+#Lower-table td {
+    padding: 5px;
+}
