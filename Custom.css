@@ -1,14 +1,27 @@
 /* === Calculator Display === */
-#result {
-    color: aquamarine;
+#myHeader {
     height: 100px;
     width: 100%;
-    font-size: 24px;
     padding: 10px;
     box-sizing: border-box;
     text-align: left;
     background-color: #1c1c1c;
     border: none;
+    vertical-align: top;
+}
+#rawinput{
+    font-size: 24px;
+    width: auto;
+    margin: 0 auto;
+    border: none;
+    color: lightblue;
+}
+#result {
+    background-color: #1c1c1c;
+    font-size: 24px;
+    border: none;
+    margin-top: 15px;
+    color: lightsalmon;
 }
 
 /* === Main Calculator Table === */
