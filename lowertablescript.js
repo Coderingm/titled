@@ -29,6 +29,7 @@ function buttonClicked(event) {
             break;
         case "clear":
             input.value = "";
+            result.value = "";
             break;
     }
 }
