@@ -4,6 +4,8 @@ const result = document.getElementById("result");
 
 // Listen for button clicks inside the calculator button area
 document.getElementById("Lower-table").addEventListener("click", buttonClicked);
+newinput = input.value.replace("&#10761;", "*");
+newinput.replace("&#x00F7", "/");
 
 /**
  * Handles calculator button clicks:
@@ -19,10 +21,10 @@ function buttonClicked(event) {
 
     switch (buttonid) {
         default:
-            input.value += event.target.value;
+            input.value += event.target.innerHTML;
             break;
         case "exe":
-            result.value = eval(input.value);
+            result.value = eval(newinput);
             break;
         case "delete":
             input.value = input.value.slice(0,-1); // removes last char

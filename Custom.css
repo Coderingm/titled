@@ -15,13 +15,14 @@
     margin: 0 auto;
     border: none;
     color: lightblue;
+    background-color: #1c1c1c;
 }
 #result {
-    background-color: #1c1c1c;
     font-size: 24px;
     border: none;
     margin-top: 15px;
     color: lightsalmon;
+    background-color: #1c1c1c;
 }
 
 /* === Main Calculator Table === */
