@@ -123,6 +123,6 @@
     padding: 5px;
 }
 sup{
-    font-size: 0.6em;
+    font-size: small;
     vertical-align: super;
 }

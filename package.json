@@ -2,7 +2,7 @@
   "name": "New titled",
   "version": "1.0.0",
   "description": "",
-  "main": "lowertablescript.js",
+  "main": "tablescript.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
