@@ -5,7 +5,11 @@ const result = document.getElementById("result");
 let newstring = "";
 // Listen for button clicks inside the calculator button area
 document.getElementById("Lower-table").addEventListener("click", buttonClicked);
-
+document.getElementById("arrows").addEventListener("click", move);
+function cursor(pos) {
+    input.focus();
+    input.setSelectionRange(pos, pos);
+}
 /**
  * Handles calculator button clicks:
  * - Appends numbers/symbols by default
@@ -38,4 +42,7 @@ function buttonClicked(event) {
             newstring += valueinput;
             break;
     }
+}
+function move(event) {
+
 }
