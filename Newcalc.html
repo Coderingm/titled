@@ -26,13 +26,13 @@
     </td>
     <td>
       <div id="arrows">
-        <button value="Up" class="vertical" onclick="move('Up')">&uarr;</button>
+        <button value="Up" class="vertical" id="up">&uarr;</button>
         <br>
-        <button value="Left" class="middle" onclick="move('Left')">&larr;</button>
+        <button value="Left" class="middle" id="left">&larr;</button>
         <button value="OK" class="middle">OK</button>
-        <button value="Right" class="middle" onclick="move('Right')">&rarr;</button>
+        <button value="Right" class="middle" id="right">&rarr;</button>
         <br>
-        <button value="Down" class="vertical" onclick="move('Down')">&darr;</button>
+        <button value="Down" class="vertical" id="down">&darr;</button>
       </div>
     </td>
   </tr>
@@ -123,7 +123,7 @@
     <tr>
       <td><button value="0" class="numbers">0</button></td>
       <td><button value="." class="numbers">.</button></td>
-      <td><button value="*10^" class="numbers">X10<sup>x</sup></button></td>
+      <td><button value="*10^" class="numbers" id="x10sup">X10<sup>x</sup></button></td>
       <td><button value="FM" class="symbols" id="format">FM</button></td>
       <td><button value="EXE" class="symbols" id="exe">EXE</button></td>
     </tr>
