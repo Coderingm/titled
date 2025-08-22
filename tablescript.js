@@ -2,6 +2,7 @@
 let input = document.getElementById("rawinput");
 const result = document.getElementById("result");
 let newstring = ""; // Stores the raw input for evaluation
+let newstringCursor = 0;
 
 // Dictionary mapping characters to their Unicode superscript equivalents
 const superscriptdict = {
@@ -57,6 +58,8 @@ function buttonClicked(event) {
     let buttoninput = event.target.innerHTML; // Button display value
     let valueinput = event.target.value;      // Button value (for raw input)
 
+    newstringCursor = startcursor; // Sync newstringCursor with input's caret
+
     switch (buttonid) {
         case "exe":
             // Evaluate the expression using math.js and display the result
@@ -66,19 +69,23 @@ function buttonClicked(event) {
             // Remove character before the caret and update input and raw string
             input.value = input.value.slice(0, startcursor - 1) + input.value.slice(endcursor);
             cursor(startcursor - 1);
-            newstring = newstring.slice(0, startcursor - 1) + newstring.slice(endcursor);
+            newstring = newstring.slice(0, newstringCursor - 1) + newstring.slice(newstringCursor);
+            newstringCursor = Math.max(0, newstringCursor - 1);
             break;
         case "clear":
             // Clear both input and result displays
             input.value = "";
             result.value = "";
             newstring = "";
+            newstringCursor = 0;
             break;
         case "x10sup":
             // Insert "x10" at caret and set superscript flag for next input
+            newx10sup = "x10^(";
             input.value = input.value.slice(0, startcursor) + buttoninput + input.value.slice(endcursor);
             cursor(startcursor + buttoninput.length);
-            newstring = newstring.slice(0, startcursor) + valueinput;
+            newstring = newstring.slice(0, newstringCursor) + valueinput + newstring.slice(newstringCursor);
+            newstringCursor += newx10sup.length;
             superscript = true;
             break;
         default:
@@ -89,7 +96,8 @@ function buttonClicked(event) {
             // Insert button input at caret and update raw string
             input.value = input.value.slice(0, startcursor) + buttoninput + input.value.slice(endcursor);
             cursor(startcursor + buttoninput.length);
-            newstring = newstring.slice(0, startcursor) + valueinput + newstring.slice(endcursor);
+            newstring = newstring.slice(0, newstringCursor) + valueinput + newstring.slice(newstringCursor);
+            newstringCursor += valueinput.length;
             break;
     }
 }

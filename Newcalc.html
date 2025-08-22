@@ -6,101 +6,75 @@
   <script defer src="tablescript.js" charset="UTF-8"></script>
 </head>
 <body>
-<table id="maintable">
-  <tr>
-    <td>
-      <table id="uppermost">
-        <tr>
-          <td id="myHeader">
-            <input type="text" id="rawinput">
-            <input type="text" id="result">
-          </td>
-        </tr>
-        <tr id="upper-table">
-            <td class="circles">
-              <button value="Catalog">&#x1F56E;</button>
-              <button value="Others">...</button>
-              <button value="Settings">&#9881;</button>
-              <button value="return">&#8617;</button>
-              <button value="On">ON</button>
-            </td>
-            <td id="arrows">
-              <button value="Up" class="vertical" id="up">&uarr;</button>
-              <br>
-              <button value="Left" class="middle" id="left">&larr;</button>
-              <button value="OK" class="middle">OK</button>
-              <button value="Right" class="middle" id="right">&rarr;</button>
-              <br>
-              <button value="Down" class="vertical" id="down">&darr;</button>
-            </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <table id="Middle_table">
-        <tr>
-          <td><button value="Shift">&uarr;</button></td>
-          <td><button value="Alpha">&alpha;</button></td>
-          <td><button value="variable">&#x21D2; x</button></td>
-          <td><button value="function">f(x)</button></td>
-          <td><button value="nPr">nPr</button></td>
-          <td><button value="Tools">&#x1F6E0;</button></td>
-        </tr>
-        <tr>
-          <td><button value="Ans">Ans</button></td>
-          <td><button value="a^x">a<sup>x</sup></button></td>
-          <td><button value="x^2">x<sup>2</sup></button></td>
-          <td><button value="log a(x)">log<sub>a</sub>x</button></td>
-          <td><button value="(x)/(a)">&#x2044;</button></td>
-          <td><button value="x">x</button></td>
-        </tr>
-        <tr>
-          <td><button value="Sin">Sin</button></td>
-          <td><button value="Sin^-1">Sin<sup>-1</sup></button></td>
-          <td><button value="Sum">&sum;</button></td>
-          <td><button value="Operator mode">=x</button></td>
-          <td><button value="percentage">&#37;</button></td>
-          <td><button value="Deriative">&#8706;</button></td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <table id="Lower-table">
-        <tr>
-          <td><button value="7" class="numbers">7</button></td>
-          <td><button value="8" class="numbers">8</button></td>
-          <td><button value="9" class="numbers">9</button></td>
-          <td><button value="DEL" class="symbols" id="delete">DEL</button></td>
-          <td><button value="AC" class="symbols" id="clear">AC</button></td>
-        </tr>
-        <tr>
-          <td><button value="4" class="numbers">4</button></td>
-          <td><button value="5" class="numbers">5</button></td>
-          <td><button value="6" class="numbers">6</button></td>
-          <td><button value="*" class="symbols">&#10761;</button></td>
-          <td><button value="/" class="symbols">&#x00F7;</button></td>
-        </tr>
-        <tr>
-          <td><button value="1" class="numbers">1</button></td>
-          <td><button value="2" class="numbers">2</button></td>
-          <td><button value="3" class="numbers">3</button></td>
-          <td><button value="+" class="symbols">+</button></td>
-          <td><button value="-" class="symbols">-</button></td>
-        </tr>
-        <tr>
-          <td><button value="0" class="numbers">0</button></td>
-          <td><button value="." class="numbers">.</button></td>
-          <td><button value="*10^(" class="numbers" id="x10sup">&#10761;10</button></td>
-          <td><button value="FM" class="symbols" id="format">FM</button></td>
-          <td><button value="EXE" class="symbols" id="exe">EXE</button></td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
+<div id="color-wrapper">
+  <div class="calculator">
+    <div class="display">
+      <input type="text" id="rawinput">
+      <input type="text" id="result">
+    </div>
+    <div class="flex justify-between">
+      <div class="circles">
+        <button value="Catalog">&#x1F56E;</button>
+        <button value="Others">...</button>
+        <button value="Settings">&#9881;</button>
+        <button value="return">&#8617;</button>
+        <button value="On">ON</button>
+      </div>
+      <div id="arrows">
+        <button value="Up" id="up">&uarr;</button>
+        <button value="Left" id="left">&larr;</button>
+        <button value="OK" id="ok">OK</button>
+        <button value="Right" id="right">&rarr;</button>
+        <button value="Down" id="down">&darr;</button>
+      </div>
+    </div>
+    <div id="Middle_table">
+      <button value="Shift">&uarr;</button>
+      <button value="Alpha">&alpha;</button>
+      <button value="variable">&#x21D2; x</button>
+      <button value="function">f(x)</button>
+      <button value="nPr">nPr</button>
+      <button value="Tools">&#x1F6E0;</button>
+      <button value="Ans">Ans</button>
+      <button value="a^x">a<sup>x</sup></button>
+      <button value="x^2">x<sup>2</sup></button>
+      <button value="log a(x)">log<sub>a</sub>x</button>
+      <button value="(x)/(a)">&#x2044;</button>
+      <button value="x">x</button>
+      <button value="Sin">Sin</button>
+      <button value="Sin^-1">Sin<sup>-1</sup></button>
+      <button value="Sum">&sum;</button>
+      <button value="Operator mode">=x</button>
+      <button value="percentage">&#37;</button>
+      <button value="Deriative">&#8706;</button>
+    </div>
+    <div id="Lower-table">
+      <div class="numberPad">
+        <button value="7" class="numbers">7</button>
+        <button value="8" class="numbers">8</button>
+        <button value="9" class="numbers">9</button>
+        <button value="4" class="numbers">4</button>
+        <button value="5" class="numbers">5</button>
+        <button value="6" class="numbers">6</button>
+        <button value="1" class="numbers">1</button>
+        <button value="2" class="numbers">2</button>
+        <button value="3" class="numbers">3</button>
+        <button value="0" class="numbers">0</button>
+        <button value="." class="numbers">.</button>
+        <button value="*10^(" class="numbers" id="x10sup">&#10761;10</button>
+      </div>
+      <div class="symbolPad">
+        <button value="DEL" class="symbols" id="delete">DEL</button>
+        <button value="AC" class="symbols" id="clear">AC</button>
+        <button value="*" class="symbols">&#10761;</button>
+        <button value="/" class="symbols">&#x00F7;</button>
+        <button value="+" class="symbols">+</button>
+        <button value="-" class="symbols">-</button>
+        <button value="FM" class="symbols" id="format">FM</button>
+        <button value="EXE" class="symbols" id="exe">EXE</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
