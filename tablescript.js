@@ -1,9 +1,11 @@
+import math from 'mathjs';
+// Initialize the expression parser
 // Get the display input element and result display
 let input = document.getElementById("rawinput");
 const result = document.getElementById("result");
 let newstring = ""; // Stores the raw input for evaluation
 let newstringCursor = 0;
-
+let superscript = false;
 // Dictionary mapping characters to their Unicode superscript equivalents
 const superscriptdict = {
     '0': '⁰',
@@ -29,71 +31,52 @@ const superscriptdict = {
 document.getElementById("Lower-table").addEventListener("click", buttonClicked);
 document.getElementById("arrows").addEventListener("click", move);
 
-let superscript = false; // Flag to indicate if next input should be superscript
-
-/**
- * Sets the caret (cursor) position in the input field.
- * @param {number} pos - The position to set the cursor to.
- */
 function cursor(pos) {
     input.focus();
     input.setSelectionRange(pos, pos);
 }
 
-/**
- * Handles calculator button clicks:
- * - Appends numbers/symbols by default
- * - Executes expression on "exe"
- * - Deletes last character on "delete"
- * - Clears input on "clear"
- * - Handles superscript input after "x10sup"
- * @param {Event} event - The click event.
- */
 function buttonClicked(event) {
-    if (event.target.tagName !== "BUTTON") return; // Ignore non-button clicks
+    if (event.target.tagName !== "BUTTON") return;
 
-    const startcursor = input.selectionStart; // Caret start position
-    const endcursor = input.selectionEnd;     // Caret end position
-    const buttonid = event.target.getAttribute("id"); // Button ID
-    let buttoninput = event.target.innerHTML; // Button display value
-    let valueinput = event.target.value;      // Button value (for raw input)
+    const startcursor = input.selectionStart;
+    const endcursor = input.selectionEnd;
+    const buttonid = event.target.getAttribute("id");
+    let buttoninput = event.target.innerHTML;
+    let valueinput = event.target.value;
 
-    newstringCursor = startcursor; // Sync newstringCursor with input's caret
+    newstringCursor = startcursor;
 
     switch (buttonid) {
         case "exe":
-            // Evaluate the expression using math.js and display the result
             result.value = math.evaluate(newstring);
             break;
         case "delete":
-            // Remove character before the caret and update input and raw string
             input.value = input.value.slice(0, startcursor - 1) + input.value.slice(endcursor);
             cursor(startcursor - 1);
             newstring = newstring.slice(0, newstringCursor - 1) + newstring.slice(newstringCursor);
-            newstringCursor = Math.max(0, newstringCursor - 1);
+            newstringCursor = math.max(0, newstringCursor - 1); // Changed from Parser.parse
             break;
         case "clear":
-            // Clear both input and result displays
             input.value = "";
             result.value = "";
             newstring = "";
             newstringCursor = 0;
+            superscript = false;
             break;
         case "x10sup":
-            // Insert "x10" at caret and set superscript flag for next input
-            newx10sup = "x10^(";
+            const newx10sup = "x10^("; // Fixed declaration
             input.value = input.value.slice(0, startcursor) + buttoninput + input.value.slice(endcursor);
             cursor(startcursor + buttoninput.length);
-            newstring = newstring.slice(0, newstringCursor) + valueinput + newstring.slice(newstringCursor);
+            newstring = newstring.slice(0, newstringCursor) + newx10sup + newstring.slice(newstringCursor);
             newstringCursor += newx10sup.length;
             superscript = true;
             break;
         default:
-            // If superscript flag is set, convert input to superscript if possible
             if (superscript) {
                 buttoninput = superscriptdict[buttoninput] || buttoninput;
+                newstringCursor += 1; // Account for added parentheses in raw string
             }
-            // Insert button input at caret and update raw string
             input.value = input.value.slice(0, startcursor) + buttoninput + input.value.slice(endcursor);
             cursor(startcursor + buttoninput.length);
             newstring = newstring.slice(0, newstringCursor) + valueinput + newstring.slice(newstringCursor);
@@ -121,6 +104,7 @@ function move(event) {
             // Move caret one position right
             startcursor = startcursor + 1;
             cursor(startcursor);
+            superscript = false;
             break;
         case "up":
             cursor(0);
